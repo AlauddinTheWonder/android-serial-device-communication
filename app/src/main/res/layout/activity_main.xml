@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/top_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/topView"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="1dp">
+
+        <TextView
+            android:id="@+id/device_name_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textColor="@color/grey"
+            android:text="@string/not_connected_str" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/log_scroll_view"
+        android:layout_above="@+id/terminal_view"
+        android:layout_below="@+id/top_view"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/log_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/terminal_view"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@color/appBG"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/terminal_input"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:hint="@string/terminal_input_hint"
+            android:autofillHints="Enter text to send"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/send"
+            android:backgroundTint="@color/white"
+            android:onClick="onTerminalSendBtnClick"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

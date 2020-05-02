@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Serial Device Communicator</string>
+    <string name="mode_selection">Please select connection mode</string>
+    <string name="select_device_type">Select Device Type</string>
+
+    <string name="not_connected_str">Device not connected</string>
+    <string name="connected_str">Connected to: <b>%1$s</b></string>
+
+    <string name="usb">USB OTG</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="send">Send</string>
+    <string name="terminal_input_hint">Enter text to send</string>
+    <string name="connect_usb_msg">"Please plug a Serial Device via OTG."</string>
+</resources>
