@@ -10,6 +10,7 @@ public class Constants {
     public static final String DEVICE_BLUETOOTH = "com.device.bluetooth";
     public static final String EXTRA_DEVICE_TYPE = "com.alan.extra.device.type";
     public static final String EXTRA_TERMINAL_MODE = "com.alan.extra.terminal.mode";
+    public static final String EXTRA_BAUD_RATE = "com.alan.extra.baud.rate";
 
     public static final String ACTION_USB_PERMISSION = "com.alan.usb.permission";
     public static final int DEFAULT_BAUD_RATE = 9600;

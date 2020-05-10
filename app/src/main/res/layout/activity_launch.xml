@@ -43,6 +43,38 @@
             android:text="@string/bluetooth"
             />
 
+        <View
+            android:id="@+id/divider"
+            style="@style/Divider"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/btn_bluetooth"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_below="@+id/divider">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Baud Rate" />
+
+        <Spinner
+            android:id="@+id/baudRateView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="0dp"
+            />
+
+        </LinearLayout>
+
     </RelativeLayout>
 
 </RelativeLayout>

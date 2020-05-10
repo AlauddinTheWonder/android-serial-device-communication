@@ -29,8 +29,11 @@ public class MyUsbDevice implements Device {
     private UsbDevice usbDevice;
     private UsbSerialDevice serial;
 
-    public MyUsbDevice(Activity context) {
+    private int baudRate;
+
+    MyUsbDevice(Activity context, int baudRate) {
         this.context = context;
+        this.baudRate = baudRate;
         usbManager = (UsbManager) context.getSystemService(Context.USB_SERVICE);
 
             IntentFilter filter = new IntentFilter();
@@ -115,12 +118,14 @@ public class MyUsbDevice implements Device {
                 boolean granted = intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false);
 
                 if (granted && usbDevice != null) {
+                    info("Connecting device via Serial port: " + baudRate);
+
                     UsbDeviceConnection connection = usbManager.openDevice(usbDevice);
                     serial = UsbSerialDevice.createUsbSerialDevice(usbDevice, connection);
 
                     if (serial != null) {
                         if (serial.open()) {
-                            serial.setBaudRate(Constants.DEFAULT_BAUD_RATE);
+                            serial.setBaudRate(baudRate);
                             serial.setDataBits(UsbSerialInterface.DATA_BITS_8);
                             serial.setStopBits(UsbSerialInterface.STOP_BITS_1);
                             serial.setParity(UsbSerialInterface.PARITY_NONE);
@@ -134,12 +139,12 @@ public class MyUsbDevice implements Device {
                                 }
                                 listener.onDeviceConnect(devName);
                             }
-                            info("Device connected via Serial port: " + Constants.DEFAULT_BAUD_RATE);
+                            info("Device connected via Serial port: " + baudRate);
                         } else {
-                            info("Can't open Serial");
+                            info("Can't connect to Serial Port");
                         }
                     } else {
-                        info("Invalid Device");
+                        info("Not a Serial bus device");
                     }
                 } else {
                     if (listener != null) {

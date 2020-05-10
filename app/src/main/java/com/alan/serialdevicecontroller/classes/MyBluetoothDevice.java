@@ -43,9 +43,12 @@ public class MyBluetoothDevice implements Device {
 
     private DeviceListener listener;
 
+    private int baudRate;
 
-    public MyBluetoothDevice(Activity context) {
+
+    MyBluetoothDevice(Activity context, int baudRate) {
         this.context = context;
+        this.baudRate = baudRate;
         btAdapter = BluetoothAdapter.getDefaultAdapter();
 
         IntentFilter filter = new IntentFilter();
