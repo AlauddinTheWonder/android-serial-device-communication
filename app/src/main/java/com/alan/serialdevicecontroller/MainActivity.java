@@ -25,8 +25,6 @@ public class MainActivity extends AppCompatActivity implements DeviceListener {
     private Debounce scrollDebounce;
     private ProgressDialog progressDialog;
 
-    private int baudRate;
-
     // Views
     private LinearLayout terminalView;
     private ScrollView scrollView;
@@ -41,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements DeviceListener {
 
         String deviceType = getIntent().getStringExtra(Constants.EXTRA_DEVICE_TYPE);
         if (deviceType != null && MyDevice.validateDevice(deviceType)) {
-            baudRate = getIntent().getIntExtra(Constants.EXTRA_BAUD_RATE, Constants.DEFAULT_BAUD_RATE);
+            int baudRate = getIntent().getIntExtra(Constants.EXTRA_BAUD_RATE, Constants.DEFAULT_BAUD_RATE);
 
             this.myDevice = MyDevice.getDevice(this, deviceType, baudRate);
         } else {
@@ -57,19 +55,9 @@ public class MainActivity extends AppCompatActivity implements DeviceListener {
         terminalView = findViewById(R.id.terminal_view);
         terminalInput = findViewById(R.id.terminal_input);
         deviceNameView = findViewById(R.id.device_name_view);
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
         myDevice.setListener(this);
         myDevice.connect();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        myDevice.disconnect();
     }
 
     @Override

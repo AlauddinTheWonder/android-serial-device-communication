@@ -85,7 +85,6 @@ public class MyBluetoothDevice implements Device {
     @Override
     public void onExit() {
         closeSocket();
-        disableBluetooth();
         this.context.unregisterReceiver(receiver);
     }
 
